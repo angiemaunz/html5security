@@ -1,4 +1,4 @@
-#summary One-sentence summary of this page.
+A "to be extended" list of interesting HTML5 resources and info. Web Forms 2.0 are covered too since they are deprecated meanwhile but still of relevance in browsers like Opera 10+
 
 = Resources on HTML5 =
 
