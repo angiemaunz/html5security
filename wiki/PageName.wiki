@@ -1,0 +1,9 @@
+#summary One-sentence summary of this page.
+
+= Resources on HTML5 =
+
+  * [http://dev.w3.org/html5/spec/Overview.html HTML5 W3C Spec Overview]
+  * [http://simon.html5.org/html5-elements HTML5 Elements and Attributes]
+  * [http://dev.w3.org/html5/html4-differences/ HTML5 differences from HTML4]
+  * [http://html5.org/tools/web-apps-tracker HTML5 Revision Tracker]
+  * [http://www.whatwg.org/specs/web-forms/current-work/ Web Forms 2.0]
