@@ -41,7 +41,7 @@ http://twitter.com/0x6D6172696F/statuses/14254551498
 
 = Conclusion = 
 
-So - where's the actual substance - none of the _real_ HTML5 security problems were addressed. Attributes, `undoManager`, inline SVG, `<meta charset>`, the "autofocus" related security implications. What about `<iframe>` "srcdoc"? What about focus stealing attacks? What about `toStaticHtml()`? What about DoS via client side regex validation? Where's actual advice on how to do it better? And not to forget about the things HTML5 actually fixes - like the weird SHORTTAGS syntax - compare Firefox 3.6+ in HTML4 and HTML5 mode with this example `<p<a href="javascript:alert(1)">a</>b`...
+So - where's the actual substance - none of the _real_ HTML5 security problems were addressed. Attributes, `undoManager`, inline SVG, `<meta charset>`, the "autofocus" related security implications. What about `<iframe>` "srcdoc"? What about focus stealing attacks? What about `toStaticHtml()`? What about DoS via client side regex validation? Where's actual advice on how to do it better? And not to forget about the things HTML5 actually fixes - like the weird SHORTTAG syntax - compare Firefox 3.6+ in HTML4 and HTML5 mode with this example `<p<a href="javascript:alert(1)">a</>b`...
 
 I would have ranted more if it weren't 2am. Maybe more tomorrow. Open for comments.
 
