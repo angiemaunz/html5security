@@ -31,7 +31,7 @@ http://twitter.com/0x6D6172696F/statuses/14254551498
   * They had to be 15+ years ago - HTML5 does not change the matter.
 
  * Cite: Fortunately, cookies aren’t passed in any browser’s probe request.
-  * Really? And even if? What then?
+  * Really? And even if? If an attacker would be able to conduct a cross domain preflight containing cookies and XSS or worse would be the basis. In that situations cookies are dough - the user can be remoted anyway. A talented attacker doesn't need cookies anymore in case s?he is able to perform XDR.
  
  * Cite: Sandbox Attribute Could Make Security Easier
   * Nope - it doesn't. We had the SOP for this and it worked for cross domain restrictions. One problem the "sandbox" attribute can solve if implemented correctly are frame busters via "allow-scripting". Since no user agent has actually implemented the sandbox so far it's still a lot of hypothesis powder involved in saying it makes security easier. What will the "webmaster" do with sand-boxed <iframe> tags and let's say his precious money making ad banners and skyscrapers? No JavaScript for them? Or better some flash? Or no <iframes> at all? Sand-boxed frames raise a lot of new questions instead of solving them. 
