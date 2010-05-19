@@ -42,3 +42,12 @@ http://twitter.com/0x6D6172696F/statuses/14254551498
 = Conclusion = 
 
 So - where's the actual substance - none of the _real_ HTML5 security problems were addressed. Attributes, `undoManager`, inline SVG, `<meta charset>`, the "autofocus" related security implications. What about `<iframe>` "srcdoc"? What about focus stealing attacks? What about `toStaticHtml()`? What about DoS via client side regex validation? Where's actual advice on how to do it better? I would have ranted more if it weren't 2am. Maybe more tomorrow. Open for comments.
+
+= Material =
+
+http://simon.html5.org/html5-elements
+https://developer.mozilla.org/En/DOM/Window.postMessage
+http://msdn.microsoft.com/en-us/library/cc848909%28VS.85%29.aspx
+http://blog.whatwg.org/whats-next-in-html-episode-2-sandbox
+http://diveintohtml5.org/forms.html
+http://dev.w3.org/html5/spec-author-view/dnd.html#the-undomanager-interface
