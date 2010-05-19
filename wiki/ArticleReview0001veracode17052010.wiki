@@ -1,6 +1,6 @@
 = Introduction =
 
-After stumbling over a tweet telling about an article on HTML5 security (http://www.veracode.com/blog/2010/05/html5-security-in-a-nutshell/) and ranting about it @rgaucher asked for a comment on this rant - so here we go.
+After stumbling over a tweet telling about an article on HTML5 security (linked later on) and ranting about it @rgaucher asked for a comment on this rant - so here we go.
 
 We haven't seen so many articles about the security implications HTML5 ships. I am not ranting against articles about that in general - the more (better) the better - just this one was full of things you wouldn't wanna have on your dinner table.
 
