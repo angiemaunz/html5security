@@ -45,9 +45,9 @@ So - where's the actual substance - none of the _real_ HTML5 security problems w
 
 = Material =
 
-http://simon.html5.org/html5-elements
-https://developer.mozilla.org/En/DOM/Window.postMessage
-http://msdn.microsoft.com/en-us/library/cc848909%28VS.85%29.aspx
-http://blog.whatwg.org/whats-next-in-html-episode-2-sandbox
-http://diveintohtml5.org/forms.html
-http://dev.w3.org/html5/spec-author-view/dnd.html#the-undomanager-interface
+ * http://simon.html5.org/html5-elements
+ * https://developer.mozilla.org/En/DOM/Window.postMessage
+ * http://msdn.microsoft.com/en-us/library/cc848909%28VS.85%29.aspx
+ * http://blog.whatwg.org/whats-next-in-html-episode-2-sandbox
+ * http://diveintohtml5.org/forms.html
+ * http://dev.w3.org/html5/spec-author-view/dnd.html#the-undomanager-interface
