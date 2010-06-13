@@ -15,7 +15,7 @@ Whereas COR enables  JavaScript to read the content of the foreign site through 
 
 Plug-ins like Flash and Silverlight are also able to make cross domain requests and read the response. However their design is completely different from COR’s.
 
-In the case of Flash or Silverlight a Crossdomain.xml file is created on the server stating which domain can make cross domain requests to this site. And if ‘http://your.site’ allows ‘http://my.site’ in its policy file then ‘http://my.site’ can access all the files in ‘http://your.site’. It’s a per-site access-control mode. Either you allow a foreign site to access all your resources or none of your resources.
+In the case of Flash or Silverlight a Crossdomain.xml file is created on the server stating which domain can make cross domain requests to this site. And if http://your.site allows http://my.site in its policy file then http://my.site can access all the files in http://your.site. It’s a per-site access-control mode. Either you allow a foreign site to access all your resources or none of your resources.
 
 COR on the other hand, works on a per-page access-control model. Every page has to respond with a special header, the ‘Access-Control-Allow-Origin’ header to be accessible by a foreign site. This is a significant difference because you can only expose limited portions of your website to foreign sites while keeping the rest inaccessible.
 And in the COR model the responsibility of Access Control is in the hands of the developers and not the server administrators. The developers have to write special code in those pages that should be accessible by foreign sites.
@@ -196,6 +196,4 @@ If you only rely on the 'Access-Control-Allow-Origin' for protection then the pa
   *  HTTP access control - https://developer.mozilla.org/en/http_access_control
   * Server-Side Access Control - https://developer.mozilla.org/En/Server-Side_Access_Control
   *  Arun Ranganathan's COR demos - http://arunranga.com/examples/access-control/
-
-
 
