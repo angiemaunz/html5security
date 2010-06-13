@@ -195,5 +195,5 @@ If you only rely on the 'Access-Control-Allow-Origin' for protection then the pa
   * W3C Specification for Cross Origin Request - http://www.w3.org/TR/cors/
   *  HTTP access control - https://developer.mozilla.org/en/http_access_control
   * Server-Side Access Control - https://developer.mozilla.org/En/Server-Side_Access_Control
-  *  Arun Ranganathan's COR demos - http://arunranga.com/examples/access-control/
-
+  * Arun Ranganathan's COR demos - http://arunranga.com/examples/access-control/
+  * HTML5 Security Quick Reference Guide with Demos - http://www.andlabs.org/html5.html
