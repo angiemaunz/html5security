@@ -118,3 +118,4 @@ No. Inspite of the best counter-measures, data stored on the client-side is alwa
   * Google Gears for Attackers - http://www.andlabs.org/whitepapers/GoogleGears_for_Attackers.pdf
   * Remy Sharp's HTML5 Web Database Demo - http://html5demos.com/database
   * Imposter - the Browser Phishing Tool - http://www.andlabs.org/tools.html#imposter
+  * HTML5 Security Quick Reference Guide with Demos - http://www.andlabs.org/html5.html
