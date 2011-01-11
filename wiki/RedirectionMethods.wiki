@@ -4,9 +4,14 @@
 
 == Introduction ==
 
-Redirects are important tools for attackers. They can be used to initialize attacks, jump to malicious URLs, hide important content visible in the address bar or worse. This wiki page attempts to list all of them -  no matter if initiated by the browser or delegated to the browser by other tools such as Flash content, Java applets and PDF files.
+Redirects are often important tools for attackers and even more often ignored as such. They can be used to initialize attacks, jump to malicious URLs, hide important content visible in the address bar or execute script code. This wiki page attempts to list all of them -  no matter if initiated by the browser or delegated to the browser by other tools such as Flash content, Java applets and PDF files.
 
-Great in formation on redirection methods can also be found here: http://en.wikipedia.org/wiki/URL_redirection#Refresh_Meta_tag_and_HTTP_refresh_header
+Great information on redirection methods can also be found here:  
+ * http://en.wikipedia.org/wiki/URL_redirection
+ * http://www.owasp.org/index.php/Top_10_2010-A10-Unvalidated_Redirects_and_Forwards
+
+Not so great and hopefully soon to be updated info can be found here:
+http://www.owasp.org/index.php/Open_redirect
 
 == Redirection Methods ==
 
@@ -33,7 +38,8 @@ Great in formation on redirection methods can also be found here: http://en.wiki
 === Flash ===
 
 || *Name* || *Code* || *Cross Domain* || *User Interaction* || *Notes* ||
-|| getURL() Redirect || {{{getURL('http://evil.com/', false)}}} || Yes || No || It is possible to use `javascript:` URIs and other protocol handlers to execute JavaScript. The domain context depends on the domain the Flash file is being stored on if opened directly - or embedded from if instantiated via `<object>` or `<embed>`. ||
+|| getURL() Redirect || {{{getURL('http://evil.com/', false)}}} || Yes || No || It is possible to use `javascript:` URIs and other protocol handlers to execute JavaScript. The domain context depends on the domain the Flash file is being stored on if opened directly - or embedded from if instantiated via `<object>` or `<embed>`. More info on `getURL()` can be found here: http://kb2.adobe.com/cps/141/tn_14192.html ||
+|| navigateToURL() Redirect || %code% || %sop% || %ui || %notes ||
 
 === Java ===
 
