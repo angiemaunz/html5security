@@ -17,10 +17,19 @@ Great in formation on redirection methods can also be found here: http://en.wiki
 
 === JavaScript ===
 
+|| *Name* || *Code* || *Cross Domain* || *User Interaction* || *Notes* ||
+|| Setting location || {{{location='http://evil.com/';}}} || Yes || No || Note that you can access location by either using location, window.location (including all window and top aliases) as well as document.location in most user agents. This is for the following variable assignments and method calls too. ||
+|| Setting location.href || {{{location.href='http://evil.com/';}}} || Yes || No ||  ||
+|| Calling location.replace() || {{{location.replace('http://evil.com/');}}} || Yes || No ||  ||
+|| Calling location.assign() || {{{location.replace('http://evil.com/');}}} || Yes || No ||  ||
+|| Calling window.navigate() || {{{window.navigate('http://evil.com/');}}} || Yes || No || This method is non-standard and currently being supported by Internet Explorer and Opera ||
+
+
 === Flash ===
 
 || *Name* || *Code* || *Cross Domain* || *User Interaction* || *Notes* ||
 || getURL() Redirect || {{{getURL('http://evil.com/', false)}}} ||  ||  ||  ||
+
 === Java ===
 
 || *Name* || *Code* || *Cross Domain* || *User Interaction* || *Notes* ||
@@ -35,3 +44,5 @@ Great in formation on redirection methods can also be found here: http://en.wiki
 === XML ===
 
 === OpenOffice ===
+
+=== Special Cases ===
