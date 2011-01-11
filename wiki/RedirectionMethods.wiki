@@ -12,16 +12,25 @@ Great in formation on redirection methods can also be found here: http://en.wiki
 === HTML ===
 
 || *Name* || *Code* || *Cross Domain* || *User Interaction* || *Notes* ||
-|| META Refresh || <meta http-equiv="refresh" content="0;url=http://evil.com/"> || Yes || No || Depending on the user agent the target can be javascript: or data: URIs to execute JavaScript. Usually the JavaScript will execute on about:blank. More info can be found here: http://en.wikipedia.org/wiki/Meta_refresh ||
-|| META Location || <meta http-equiv="location" content="URL=http://evil.com" /> || Yes || No || Not many user agents support this method anymore. ||
+|| META Refresh || {{{<meta http-equiv="refresh" content="0;url=http://evil.com/" />}}} || Yes || No || Depending on the user agent the target can be javascript: or data: URIs to execute JavaScript. Usually the JavaScript will execute on about:blank. More info can be found here: http://en.wikipedia.org/wiki/Meta_refresh ||
+|| META Location || {{{<meta http-equiv="location" content="URL=http://evil.com" />}}} || Yes || No || Not many user agents support this method anymore. Some resources such as http://help.dottoro.com/lhquobhe.php claim it works on all browsers - which has been falsified during testing. ||
 
 === JavaScript ===
 
 === Flash ===
 
+|| *Name* || *Code* || *Cross Domain* || *User Interaction* || *Notes* ||
+|| getURL() Redirect || {{{getURL('http://evil.com/', false)}}} ||  ||  ||  ||
 === Java ===
 
+|| *Name* || *Code* || *Cross Domain* || *User Interaction* || *Notes* ||
+|| Applet showDocument() || {{{getAppletContext().showDocument(new URL('http://evil.com'));}}} || Yes || No || The Java applet can redirect the user agent to any given HTTP URL. Note that current Java Runtime Engine versions use a whitelist of protocol handlers.  ||
+
 === PDF ===
+
+|| *Name* || *Code* || *Cross Domain* || *User Interaction* || *Notes* ||
+|| launchURL() Redirect || {{{app.launchURL('http://evil.com/', false)}}} || Yes || Yes/No || Note that an embedded Adobe PDF reader can redirect without user interaction in case the SOP is not being violated by the redirect target. Otherwise modern versions of the Acrobat Reader pop up a confirmation dialog before redirecting. Adobe Script uses a blacklist to forbid redirects to file:, javascript: and data: URIs as well as vbscript:  and jscript: URIs. You can find more information on app.launchURL() in he Acrobat Script documentation:  http://livedocs.adobe.com/acrobat_sdk/9.1/Acrobat9_1_HTMLHelp/wwhelp/wwhimpl/common/html/wwhelp.htm?context=Acrobat9_HTMLHelp&file=JS_API_AcroJS.88.150.html ||
+|| getURL() Redirect || {{{app.getURL('http://evil.com/', false)}}} || Yes ||  ||  ||
 
 === XML ===
 
