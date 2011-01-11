@@ -1,16 +1,28 @@
 #summary This page attempts to list all redirect methods relevant in terms of web application and browser security
 
 
-= Introduction =
+== Introduction ==
 
 Redirects are important tools for attackers. They can be used to initialize attacks, jump to malicious URLs, hide important content visible in the address bar or worse. This wiki page attempts to list all of them -  no matter if initiated by the browser or delegated to the browser by other tools such as Flash content, Java applets and PDF files.
 
 Great in formation on redirection methods can also be found here: http://en.wikipedia.org/wiki/URL_redirection#Refresh_Meta_tag_and_HTTP_refresh_header
 
-= Redirection Methods =
+== Redirection Methods ==
 
-HTML
+=== HTML ===
 
 || *Name* || *Code* || *Cross Domain* || *User Interaction* || *Notes* ||
 || META Refresh || <meta http-equiv="refresh" content="0;url=http://evil.com/"> || Yes || No || Depending on the user agent the target can be javascript: or data: URIs to execute JavaScript. Usually the JavaScript will execute on about:blank. More info can be found here: http://en.wikipedia.org/wiki/Meta_refresh ||
 || META Location || <meta http-equiv="location" content="URL=http://evil.com" /> || Yes || No || Not many user agents support this method anymore. ||
+
+=== JavaScript ===
+
+=== Flash ===
+
+=== Java ===
+
+=== PDF ===
+
+=== XML ===
+
+=== OpenOffice ===
