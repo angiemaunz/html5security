@@ -38,7 +38,9 @@ Great in formation on redirection methods can also be found here: http://en.wiki
 === Java ===
 
 || *Name* || *Code* || *Cross Domain* || *User Interaction* || *Notes* ||
-|| Applet showDocument() || {{{getAppletContext().showDocument(new URL('http://evil.com'));}}} || Yes || No || The Java applet can redirect the user agent to any given HTTP URL. Note that current Java Runtime Engine versions use a whitelist of protocol handlers.  ||
+|| Applet showDocument() || {{{getAppletContext().showDocument(new URL('http://evil.com'), '_self');}}} || Yes || No || The Java applet can redirect the user agent to any given HTTP URL. Note that current Java Runtime Engine versions use a whitelist of protocol handlers.  ||
+|| Applet and internal Java Browser || {{{with(new Packages.javax.swing.JFrame()){add(new Packages.javax.swing.JEditorPane('http://evil.com/')),setSize(500,500),setVisible(true)
+} }}} || No || No || Java provides an internal minimalistic browser. This tool is capable for rendering minimal HTML but can be used to leverage more complex attacks. The show demo code is working on Gecko based browsers when executed as JavaScript. ||
 
 === PDF ===
 
