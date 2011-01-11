@@ -1,4 +1,5 @@
 #summary This page attempts to list all redirect methods relevant in terms of web application and browser security
+#labels redirects,security,html,pdf,java,javascript,flash
 
 
 == Introduction ==
@@ -18,17 +19,21 @@ Great in formation on redirection methods can also be found here: http://en.wiki
 === JavaScript ===
 
 || *Name* || *Code* || *Cross Domain* || *User Interaction* || *Notes* ||
-|| Setting location || {{{location='http://evil.com/';}}} || Yes || No || Note that you can access location by either using location, window.location (including all window and top aliases) as well as document.location in most user agents. This is for the following variable assignments and method calls too. ||
+|| Setting location || {{{location='http://evil.com/';}}} || Yes || No || Note that you can access location by either using location, `window.location` (including all `window`, `parent` and `top` aliases) as well as `document.location` in most user agents. This is for the following variable assignments and method calls too. All properties can be set with `javascript:`, `data:` or `vbscript:` URIs to execute JavaScript on the originating domain. ||
 || Setting location.href || {{{location.href='http://evil.com/';}}} || Yes || No ||  ||
 || Calling location.replace() || {{{location.replace('http://evil.com/');}}} || Yes || No ||  ||
 || Calling location.assign() || {{{location.replace('http://evil.com/');}}} || Yes || No ||  ||
 || Calling window.navigate() || {{{window.navigate('http://evil.com/');}}} || Yes || No || This method is non-standard and currently being supported by Internet Explorer and Opera ||
+|| Calling window.open() || window.open('http://evil.com/'); || Yes || Yes || Most modern browsers will activate the popup blocker before performing the request. Thus the user interaction flag is set to `Yes`. This method call is not necessarily a redirect but can be turned into one by consolidating name and target value of opener and popup. Arbitrary URIs and protocol handlers can be used with this method. ||
+|| Calling showModalDialog() || window.showModalDialog('http://evil.com/') || Yes || Yes || Same as with `window.open()` this method call activates the popup blocker if not called with a trusted event. Arbitrary URIs and protocol handlers can be used with this method. ||
+|| Setting document.URL || {{{document.URL='http://evil.com/';}}} || Yes || No || This non standard behavior only works in Internet Explorer. Its possible to use arbitrary protocol handlers - such as for example `javascript:` and `vbscript:` to execute JavaScript. ||
+
 
 
 === Flash ===
 
 || *Name* || *Code* || *Cross Domain* || *User Interaction* || *Notes* ||
-|| getURL() Redirect || {{{getURL('http://evil.com/', false)}}} ||  ||  ||  ||
+|| getURL() Redirect || {{{getURL('http://evil.com/', false)}}} || Yes || No || It is possible to use `javascript:` URIs and other protocol handlers to execute JavaScript. The domain context depends on the domain the Flash file is being stored on if opened directly - or embedded from if instantiated via `<object>` or `<embed>`. ||
 
 === Java ===
 
@@ -38,10 +43,13 @@ Great in formation on redirection methods can also be found here: http://en.wiki
 === PDF ===
 
 || *Name* || *Code* || *Cross Domain* || *User Interaction* || *Notes* ||
-|| launchURL() Redirect || {{{app.launchURL('http://evil.com/', false)}}} || Yes || Yes/No || Note that an embedded Adobe PDF reader can redirect without user interaction in case the SOP is not being violated by the redirect target. Otherwise modern versions of the Acrobat Reader pop up a confirmation dialog before redirecting. Adobe Script uses a blacklist to forbid redirects to file:, javascript: and data: URIs as well as vbscript:  and jscript: URIs. You can find more information on app.launchURL() in he Acrobat Script documentation:  http://livedocs.adobe.com/acrobat_sdk/9.1/Acrobat9_1_HTMLHelp/wwhelp/wwhimpl/common/html/wwhelp.htm?context=Acrobat9_HTMLHelp&file=JS_API_AcroJS.88.150.html ||
-|| getURL() Redirect || {{{app.getURL('http://evil.com/', false)}}} || Yes ||  ||  ||
+|| launchURL() Redirect || {{{app.launchURL('http://evil.com/', false)}}} || Yes || Yes/No || Note that an embedded Adobe PDF reader can redirect without user interaction in case the SOP is not being violated by the redirect target. Otherwise modern versions of the Acrobat Reader pop up a confirmation dialog before redirecting. Adobe Script uses a blacklist to forbid redirects to file:, javascript: and data: URIs as well as vbscript:  and jscript: URIs. You can find more information on app.launchURL() in he Acrobat Script documentation:  http://livedocs.adobe.com/acrobat_sdk/9.1/Acrobat9_1_HTMLHelp/wwhelp/wwhimpl/common/html/wwhelp.htm?context=Acrobat9_HTMLHelp&file=JS_API_AcroJS.88.150.html Note that the Adobe Reader will open the page to redirect on in the default browser - which is not necessarily the browser showing the document with the embedded PDF. ||
+|| getURL() Redirect || {{{app.getURL('http://evil.com/', false)}}} || Yes || Yes/No || This method has been heavily restricted security wise and can only be used as a redirect helper in Acrobat versions older than Acrobat 6.0. The documentation for this method can be found here: http://livedocs.adobe.com/acrobat_sdk/9.1/Acrobat9_1_HTMLHelp/wwhelp/wwhimpl/common/html/wwhelp.htm?context=Acrobat9_HTMLHelp&file=JS_API_AcroJS.88.495.html ||
 
 === XML ===
+
+|| *Name* || *Code* || *Cross Domain* || *User Interaction* || *Notes* ||
+
 
 === OpenOffice ===
 
