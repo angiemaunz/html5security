@@ -39,8 +39,7 @@ Great in formation on redirection methods can also be found here: http://en.wiki
 
 || *Name* || *Code* || *Cross Domain* || *User Interaction* || *Notes* ||
 || Applet showDocument() || {{{getAppletContext().showDocument(new URL('http://evil.com'), '_self');}}} || Yes || No || The Java applet can redirect the user agent to any given HTTP URL. Note that current Java Runtime Engine versions use a whitelist of protocol handlers.  ||
-|| Applet and internal Java Browser || {{{with(new Packages.javax.swing.JFrame()){add(new Packages.javax.swing.JEditorPane('http://evil.com/')),setSize(500,500),setVisible(true)
-} }}} || No || No || Java provides an internal minimalistic browser. This tool is capable for rendering minimal HTML but can be used to leverage more complex attacks. The show demo code is working on Gecko based browsers when executed as JavaScript. ||
+|| Applet and internal Java Browser || {{{with(new Packages.javax.swing.JFrame()){add(new Packages.javax.swing.JEditorPane('http://evil.com/')),setSize(500,500),setVisible(true)}}}} || No || No || Java provides an internal minimalistic browser. This tool is capable for rendering minimal HTML but can be used to leverage more complex attacks. The show demo code is working on Gecko based browsers when executed as JavaScript. ||
 
 === PDF ===
 
@@ -51,7 +50,7 @@ Great in formation on redirection methods can also be found here: http://en.wiki
 === XML ===
 
 || *Name* || *Code* || *Cross Domain* || *User Interaction* || *Notes* ||
-
+|| XLink Redirect || {{{<x xmlns:xlink="http://www.w3.org/1999/xlink" xlink:actuate="onLoad" xlink:href="http://evil.com" xlink:type="simple"/>}}} || Yes || No || This example currently works on Gecko based browsers. XLink `href` attributes can be triggered to be activated by an XLink `actuate` attribute applied with `onload`. This kind of redirect is thus basically a self-clicking link. More info is available here:  http://html5sec.org/#81 ||
 
 === OpenOffice ===
 
