@@ -18,13 +18,13 @@ http://www.owasp.org/index.php/Open_redirect
 === HTML ===
 
 || *Name* || *Code* || *Cross Domain* || *User Interaction* || *Referrer Leak* || *Notes* ||
-|| META Refresh || {{{<meta http-equiv="refresh" content="0;url=http://evil.com/" />}}} || Yes || No || || Depending on the user agent the target can be javascript: or data: URIs to execute JavaScript. Usually the JavaScript will execute on about:blank. More info can be found here: http://en.wikipedia.org/wiki/Meta_refresh ||
+|| META Refresh || {{{<meta http-equiv="refresh" content="0;url=http://evil.com/" />}}} || Yes || No || || Depending on the user agent the target can consist of `javascript:` or `data:` URIs to execute !JavaScript. Usually the !JavaScript will execute on `about:blank` - some older browsers as well as Gecko based user agents execute the !JavaScript on the same domain though. More info can be found here: http://en.wikipedia.org/wiki/Meta_refresh ||
 || META Location || {{{<meta http-equiv="location" content="URL=http://evil.com" />}}} || Yes || No || || Not many user agents support this method anymore. Some resources such as http://help.dottoro.com/lhquobhe.php claim it works on all browsers - which has been falsified during testing. ||
 
-=== JavaScript ===
+=== !JavaScript ===
 
 || *Name* || *Code* || *Cross Domain* || *User Interaction* || *Referrer Leak* || *Notes* ||
-|| Setting location || {{{location='http://evil.com/';}}} || Yes || No || || Note that you can access location by either using location, `window.location` (including all `window`, `parent` and `top` aliases) as well as `document.location` in most user agents. This is for the following variable assignments and method calls too. All properties can be set with `javascript:`, `data:` or `vbscript:` URIs to execute JavaScript on the originating domain. ||
+|| Setting location || {{{location='http://evil.com/';}}} || Yes || No || || Note that you can access location by either using location, `window.location` (including all `window`, `parent` and `top` aliases) as well as `document.location` in most user agents. This is for the following variable assignments and method calls too. All properties can be set with `javascript:`, `data:` or `vbscript:` URIs to execute !JavaScript on the originating domain. ||
 || Setting location.href || {{{location.href='http://evil.com/';}}} || Yes || No || || ||
 || Setting location.host || {{{location.host='http://evil.com/';}}} || Yes || No || || ||
 || Setting location.hostname || {{{location.hostname='http://evil.com/';}}} || Yes || No ||  ||
@@ -34,26 +34,29 @@ http://www.owasp.org/index.php/Open_redirect
 || Calling window.open() || {{{window.open('http://evil.com/');}}} || Yes || Yes || || Most modern browsers will activate the popup blocker before performing the request. Thus the user interaction flag is set to `Yes`. This method call is not necessarily a redirect but can be turned into one by consolidating name and target value of opener and popup. Arbitrary URIs and protocol handlers can be used with this method. ||
 || Calling showModalDialog() || {{{window.showModalDialog('http://evil.com/');}}} || Yes || Yes || || Same as with `window.open()` this method call activates the popup blocker if not called with a trusted event. Arbitrary URIs and protocol handlers can be used with this method. ||
 || Calling showModelessDialog() || {{{window.showModelessDialog("http://evil.com/");}}} || Yes || No || || Only works on Internet Explorer. Same as with `window.open()` this method call activates the popup blocker if not called with a trusted event. Arbitrary URIs and protocol handlers can be used with this method. ||
-|| Setting document.URL || {{{document.URL='http://evil.com/';}}} || Yes || No || || This non standard behavior only works in Internet Explorer. Its possible to use arbitrary protocol handlers - such as for example `javascript:` and `vbscript:` to execute JavaScript. ||
+|| Setting document.URL || {{{document.URL='http://evil.com/';}}} || Yes || No || || This non standard behavior only works in Internet Explorer. Its possible to use arbitrary protocol handlers - such as for example `javascript:` and `vbscript:` to execute !JavaScript. ||
 || Evil Framebuster || {{{top.location.href='http://evil.com/'}}} || Yes || No || || Equivalent to the aforementioned location setters - yet worth mentioning due to many popular services allowing `iframe` from trusted and semi-trusted domains ||
 
 
 === Flash ===
 
 || *Name* || *Code* || *Cross Domain* || *User Interaction* || *Referrer Leak* || *Notes* ||
-|| getURL() Redirect || {{{getURL('http://evil.com/', false)}}} || Yes || No || || It is possible to use `javascript:` URIs and other protocol handlers to execute JavaScript. The domain context depends on the domain the Flash file is being stored on if opened directly - or embedded from if instantiated via `<object>` or `<embed>`. More info on `getURL()` can be found here: http://kb2.adobe.com/cps/141/tn_14192.html ||
-|| navigateToURL() Redirect || %code% || %sop% || %ui || %refleak% || %notes ||
+|| getURL() Redirect || {{{getURL('http://evil.com/', '_self')}}} || Yes || No || || It is possible to use `javascript:` URIs and other protocol handlers to execute !JavaScript. The domain context depends on the domain the Flash file is being stored on if opened directly - or embedded from if instantiated via `<object>` or `<embed>`. More info on `getURL()` can be found here: http://kb2.adobe.com/cps/141/tn_14192.html This method has been introduced with !ActionScript 2.0. ||
+|| navigateToURL() Redirect || {{{ var url:URLRequest = new URLRequest("http://www.adobe.com");navigateToURL(url, "_self");}}} || Yes || No ||  || The `navigateToURL()` method is the !ActionScript 3.0 equivalent for `getURL()`. As `getURL()` this method can be used with `javascript:` URIs and other protocol handlers. More info can be found here: http://kb2.adobe.com/cps/141/tn_14192.html#main_getURL_navigateToURL ||
+|| fscommand Redirects || {{{fscommand("open", "http://evil.com/|foo");}}} || Yes || No || || The `fscommand` method is used to execute methods available on the HTML page embedding the Flash file. Multiple parameters can be separated by the pipe character `|` as shown in http://kb2.adobe.com/cps/141/tn_14192.html#main_fscommand ||
+|| !ExternalInterface || {{{ExternalInterface.call("window.open", "http://evil.com", "foo");}}} || Yes || No || || Similar to `fscommand` the `ExternalInterface` object and its `call()` method can be used to execute !JavaScript on the embedding HTML document. The object is available since Flash Player version 8 http://kb2.adobe.com/cps/141/tn_14192.html#main_ExternalInterface ||
+
 
 === Java ===
 
 || *Name* || *Code* || *Cross Domain* || *User Interaction* || *Referrer Leak* || *Notes* ||
 || Applet showDocument() || {{{getAppletContext().showDocument(new URL('http://evil.com'), '_self');}}} || Yes || No || || The Java applet can redirect the user agent to any given HTTP URL. Note that current Java Runtime Engine versions use a whitelist of protocol handlers.  ||
-|| Applet and internal Java Browser || {{{with(new Packages.javax.swing.JFrame()){add(new Packages.javax.swing.JEditorPane('http://evil.com/')),setSize(500,500),setVisible(true)}}}} || No || No ||  || Java provides an internal minimalistic browser. This tool is capable for rendering minimal HTML but can be used to leverage more complex attacks. The show demo code is working on Gecko based browsers when executed as JavaScript. ||
+|| Applet and internal Java Browser || {{{with(new Packages.javax.swing.JFrame()){add(new Packages.javax.swing.JEditorPane('http://evil.com/')),setSize(500,500),setVisible(true)}}}} || No || No ||  || Java provides an internal minimalistic browser. This tool is capable for rendering minimal HTML but can be used to leverage more complex attacks. The show demo code is working on Gecko based browsers when executed as !JavaScript. ||
 
 === PDF ===
 
 || *Name* || *Code* || *Cross Domain* || *User Interaction* || *Referrer Leak* || *Notes* ||
-|| launchURL() Redirect || {{{app.launchURL('http://evil.com/', false)}}} || Yes || Yes/No || || Note that an embedded Adobe PDF reader can redirect without user interaction in case the SOP is not being violated by the redirect target. Otherwise modern versions of the Acrobat Reader pop up a confirmation dialog before redirecting. Adobe Script uses a blacklist to forbid redirects to file:, javascript: and data: URIs as well as vbscript:  and jscript: URIs. You can find more information on app.launchURL() in he Acrobat Script documentation:  http://livedocs.adobe.com/acrobat_sdk/9.1/Acrobat9_1_HTMLHelp/wwhelp/wwhimpl/common/html/wwhelp.htm?context=Acrobat9_HTMLHelp&file=JS_API_AcroJS.88.150.html Note that the Adobe Reader will open the page to redirect on in the default browser - which is not necessarily the browser showing the document with the embedded PDF. ||
+|| launchURL() Redirect || {{{app.launchURL('http://evil.com/', false)}}} || Yes || Yes/No || || Note that an embedded Adobe PDF reader can redirect without user interaction in case the SOP is not being violated by the redirect target. Otherwise modern versions of the Acrobat Reader pop up a confirmation dialog before redirecting. Adobe Script uses a blacklist to forbid redirects to file:, javascript: and data: URIs as well as vbscript:  and jscript: URIs. You can find more information on `app.launchURL()` in he Acrobat Script documentation:  http://livedocs.adobe.com/acrobat_sdk/9.1/Acrobat9_1_HTMLHelp/wwhelp/wwhimpl/common/html/wwhelp.htm?context=Acrobat9_HTMLHelp&file=JS_API_AcroJS.88.150.html Note that the Adobe Reader will open the page to redirect on in the default browser - which is not necessarily the browser showing the document with the embedded PDF. ||
 || getURL() Redirect || {{{app.getURL('http://evil.com/', false)}}} || Yes || Yes/No || || This method has been heavily restricted security wise and can only be used as a redirect helper in Acrobat versions older than Acrobat 6.0. The documentation for this method can be found here: http://livedocs.adobe.com/acrobat_sdk/9.1/Acrobat9_1_HTMLHelp/wwhelp/wwhimpl/common/html/wwhelp.htm?context=Acrobat9_HTMLHelp&file=JS_API_AcroJS.88.495.html ||
 
 === XML ===
