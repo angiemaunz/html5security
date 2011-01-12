@@ -33,9 +33,9 @@ http://www.owasp.org/index.php/Open_redirect
 || Calling window.navigate() || {{{window.navigate('http://evil.com/');}}} || Yes || No || ||  This method is non-standard and currently being supported by Internet Explorer and Opera ||
 || Calling window.open() || {{{window.open('http://evil.com/');}}} || Yes || Yes || || Most modern browsers will activate the popup blocker before performing the request. Thus the user interaction flag is set to `Yes`. This method call is not necessarily a redirect but can be turned into one by consolidating name and target value of opener and popup. Arbitrary URIs and protocol handlers can be used with this method. ||
 || Calling showModalDialog() || {{{window.showModalDialog('http://evil.com/');}}} || Yes || Yes || || Same as with `window.open()` this method call activates the popup blocker if not called with a trusted event. Arbitrary URIs and protocol handlers can be used with this method. ||
-|| Calling showModelessDialog() || {{{window.showModelessDialog("http://evil.com/");}}} || Yes || No || || Only works on Internet Explorer. Same as with `window.open()` this method call activates the popup blocker if not called with a trusted event. Arbitrary URIs and protocol handlers can be used with this method.
+|| Calling showModelessDialog() || {{{window.showModelessDialog("http://evil.com/");}}} || Yes || No || || Only works on Internet Explorer. Same as with `window.open()` this method call activates the popup blocker if not called with a trusted event. Arbitrary URIs and protocol handlers can be used with this method. ||
 || Setting document.URL || {{{document.URL='http://evil.com/';}}} || Yes || No || || This non standard behavior only works in Internet Explorer. Its possible to use arbitrary protocol handlers - such as for example `javascript:` and `vbscript:` to execute JavaScript. ||
-
+|| Evil Framebuster || {{{top.location.href='http://evil.com/'}}} || Yes || No || || Equivalent to the aforementioned location setters - yet worth mentioning due to many popular services allowing `iframe` from trusted and semi-trusted domains ||
 
 
 === Flash ===
@@ -63,4 +63,8 @@ http://www.owasp.org/index.php/Open_redirect
 
 === OpenOffice ===
 
+
 === Special Cases ===
+
+|| *Name* || *Code* || *Cross Domain* || *User Interaction* || *Referrer Leak* || *Notes* ||
+|| Pidgin, Kopete, other Instant Messengers || {{{<a href="file:///">http://www.google.com/</a>}}} || Yes || Yes || || Many instant messaging tools and libraries allow posting links jumping to `file:` or `data:` URIs. This allows attackers to exploit local DOMXSS and hide payload in data URIs. Often the window manager in use plays a role too. Pidgin on Gnome for example utilizes `gnome-open` to delegate URIs. ||
