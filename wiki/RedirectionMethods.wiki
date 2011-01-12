@@ -1,5 +1,5 @@
 #summary This page attempts to list all redirect methods relevant in terms of web application and browser security
-#labels redirects,security,html,pdf,java,javascript,flash
+#labels redirects,security,html,pdf,java,javascript,flash,Featured
 
 
 == Introduction ==
@@ -54,7 +54,7 @@ http://www.owasp.org/index.php/Open_redirect
 
 || *Name* || *Code* || *Cross Domain* || *User Interaction* || *Referrer Leak* || *Notes* ||
 || Applet showDocument() || {{{getAppletContext().showDocument(new URL('http://evil.com'), '_self');}}} || Yes || No || || The Java applet can redirect the user agent to any given HTTP URL. Note that current Java Runtime Engine versions use a whitelist of protocol handlers. http://download.oracle.com/javase/1.4.2/docs/api/java/applet/AppletContext.html#showDocument%28java.net.URL%29  ||
-|| Applet and internal Java Browser || {{{with(new Packages.javax.swing.JFrame()){add(new Packages.javax.swing.JEditorPane('http://evil.com/')),setSize(500,500),setVisible(true)}}}} || No || No ||  || Java provides an internal minimalistic browser. This tool is capable for rendering minimal HTML but can be used to leverage more complex attacks. The show demo code is working on Gecko based browsers when executed as !JavaScript. http://download.oracle.com/javase/1.4.2/docs/api/javax/swing/JEditorPane.html ||
+|| Applet and internal Java Browser || {{{with(new Packages.javax.swing.JFrame()){add(new Packages.javax.swing.JEditorPane('http://evil.com/')), setSize(500,500),setVisible(true)}}}} || No || No ||  || Java provides an internal minimalistic browser. This tool is capable for rendering minimal HTML but can be used to leverage more complex attacks. The show demo code is working on Gecko based browsers when executed as !JavaScript. http://download.oracle.com/javase/1.4.2/docs/api/javax/swing/JEditorPane.html ||
 
 
 === PDF ===
