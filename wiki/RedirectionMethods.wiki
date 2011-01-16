@@ -64,6 +64,10 @@ http://www.owasp.org/index.php/Open_redirect
 || getURL() Redirect || {{{app.getURL('http://evil.com/', false)}}} || Yes || Yes/No || || This method has been heavily restricted security wise and can only be used as a redirect helper in Acrobat versions older than Acrobat 6.0. The documentation for this method can be found here: http://livedocs.adobe.com/acrobat_sdk/9.1/Acrobat9_1_HTMLHelp/wwhelp/wwhimpl/common/html/wwhelp.htm?context=Acrobat9_HTMLHelp&file=JS_API_AcroJS.88.495.html ||
 
 
+=== Quicktime ===
+|| *Name* || *Code* || *Cross Domain* || *User Interaction* || *Referrer Leak* || *Notes* ||
+|| Redirect via QTL || {{{<?xml version="1.0"?><?quicktime type="application/x-quicktime-media-link"?><embed qtnext="http://evil.com/" src="sample_iTunes.mov" />}}} || Yes || No ||  || Quicktime files when embedded support redirection via the proprietary `qtnext` parameter. It's also possible to redirect to the given website if the shown code is placed inside a QTL file and then opened in the Quicktime player. ||
+
 === XML ===
 
 || *Name* || *Code* || *Cross Domain* || *User Interaction* || *Referrer Leak* || *Notes* ||
@@ -72,6 +76,7 @@ http://www.owasp.org/index.php/Open_redirect
 
 === OpenOffice ===
 
+TBD
 
 === Special Cases ===
 
