@@ -20,7 +20,7 @@ http://www.owasp.org/index.php/Open_redirect
 || *Name* || *Code* || *Cross Domain* || *User Interaction* || *Referrer Leak* || *Notes* ||
 || META Refresh || {{{<meta http-equiv="refresh" content="0;url=http://evil.com/" />}}} || Yes || No || || Depending on the user agent the target can consist of `javascript:` or `data:` URIs to execute !JavaScript. While Internet Explorer 8 and and Firefox forbid `javascript:` URIs, Opera, Safari and even Chrome will execute !JavaScript on the originating domain. Firefox allows data URIs - they will execute on `about:blank` though. More info can be found here: http://en.wikipedia.org/wiki/Meta_refresh ||
 || META Location || {{{<meta http-equiv="location" content="URL=http://evil.com" />}}} || Yes || No || || Not many user agents support this method anymore. Some resources such as http://help.dottoro.com/lhquobhe.php claim it works on all browsers - which has been falsified during testing. ||
-|| BASE Hijacking || {{{<base href="http://evil.com/" />}}} || Yes || Yes || || The `base` tag can be used to supply relative links with domain and protocol handler differing from the one of the loaded document. Most browsers still support this tag - some even allow to execute JavaScript with especially crafted `base` tag data http://html5sec.org/#42 |||
+|| BASE Hijacking || {{{<base href="http://evil.com/" />}}} || Yes || Yes || || The `base` tag can be used to supply relative links with domain and protocol handler differing from the one of the loaded document. Most browsers still support this tag - some even allow to execute JavaScript with especially crafted `base` tag data http://html5sec.org/#42 ||
 
 === !JavaScript ===
 
@@ -66,7 +66,7 @@ http://www.owasp.org/index.php/Open_redirect
 
 === Quicktime ===
 || *Name* || *Code* || *Cross Domain* || *User Interaction* || *Referrer Leak* || *Notes* ||
-|| Redirect via QTL || {{{<?xml version="1.0"?><?quicktime type="application/x-quicktime-media-link"?><embed qtnext="http://evil.com/" src="sample_iTunes.mov" />}}} || Yes || No ||  || Quicktime files when embedded support redirection via the proprietary `qtnext` parameter. It's also possible to redirect to the given website if the shown code is placed inside a QTL file and then opened in the Quicktime player. ||
+|| Redirect via QTL/qtnext || {{{<?xml version="1.0"?><?quicktime type="application/x-quicktime-media-link"?><embed qtnext="http://evil.com/" src="sample_iTunes.mov" />}}} || Yes || No ||  || Quicktime files - usually when embedded - support redirection via the proprietary `qtnext` parameter. It's also possible to redirect to the given website if the shown code is placed inside a QTL file and then opened in the Quicktime player. The example code works for QTL files as well as for embedding. http://developer.apple.com/library/mac/#qa/qa2008/qa1593.html  ||
 
 === XML ===
 
