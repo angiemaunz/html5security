@@ -82,3 +82,4 @@ TBD
 
 || *Name* || *Code* || *Cross Domain* || *User Interaction* || *Referrer Leak* || *Notes* ||
 || Pidgin, Kopete, other Instant Messengers || {{{<a href="file:///">http://www.google.com/</a>}}} || Yes || Yes || || Many instant messaging tools and libraries allow posting links jumping to `file:` or `data:` URIs. This allows attackers to exploit local DOMXSS and hide payload in data URIs. Often the window manager in use plays a role too. Pidgin on Gnome for example utilizes `gnome-open` to delegate URIs. ||
+|| Wedia Player ASF Banner Redirect || {{{<ASX Version="3"><TITLE></TITLE><ENTRY><REF HREF="some-video.asf" /><BANNER HREF="some-image.png" ><MOREINFO HREF="http://evil.com/" target="_self" /></BANNER></ENTRY></ASX>}}} || Yes || Yes ||  || Recent Windows Media Player versions allow to fetch external HTTP data for in-video banner images. Those can be over-layed with a link that will be opened in the default browser on click. ||
